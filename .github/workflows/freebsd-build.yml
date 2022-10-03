@@ -21,3 +21,8 @@ jobs:
           pwd
           ls -lah
           go build
+          ls -lah
+    - uses: actions/upload-artifact@v3
+      with:
+        name: ntp-freebsd13.1-latest
+        path: ntp
