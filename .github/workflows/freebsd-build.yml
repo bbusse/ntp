@@ -1,0 +1,25 @@
+- name: FreeBSD-vm
+  uses: vmactions/freebsd-vm@v0.2.9
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: macos-12
+    name: A job to run test in FreeBSD
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build on FreeBSD
+      id: build
+      uses: vmactions/freebsd-vm@v0
+      with:
+        usesh: true
+        prepare: |
+          pkg install -y curl go
+
+        run: |
+          pwd
+          ls -lah
+          whoami
+          env
+          freebsd-version
