@@ -1,0 +1,34 @@
+---
+name: FreeBSD-build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: macos-12
+    name: Build on FreeBSD
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build on FreeBSD
+        uses: vmactions/freebsd-vm@v0.2.9
+        id: build
+        with:
+          usesh: true
+          prepare: |
+            pkg install -y curl go
+
+          run: |
+            freebsd-version
+            pwd
+            ls -lah
+            go build
+            tar -cJvf ntp-latest.tar.xz ntp
+            ls -lah
+      - name: Release
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
+          automatic_release_tag: "latest"
+          files: |
+            ntp-latest.tar.xz
