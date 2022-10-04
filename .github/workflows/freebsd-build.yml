@@ -5,7 +5,7 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: macos-12
-    name: Build in FreeBSD
+    name: Build on FreeBSD
     steps:
     - uses: actions/checkout@v2
     - name: Build on FreeBSD
@@ -22,7 +22,10 @@ jobs:
           ls -lah
           go build
           ls -lah
-    - uses: actions/upload-artifact@v3
+    - uses: "marvinpinto/action-automatic-releases@latest"
       with:
-        name: ntp-freebsd13.1-latest
-        path: ntp
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        prerelease: false
+        automatic_release_tag: "latest"
+          files: |
+            ntp
