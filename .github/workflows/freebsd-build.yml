@@ -22,8 +22,10 @@ jobs:
             pwd
             ls -lah
             go build
+            tar -cJvf ntp-latest.tar.xz ntp
             ls -lah
-      - uses: "marvinpinto/action-automatic-releases@latest"
+      - name: Release
+        uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
