@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build on FreeBSD
-        uses: vmactions/freebsd-vm@v0.2.9
+        uses: vmactions/freebsd-vm@v0.3.0
         id: build
         with:
           usesh: true
