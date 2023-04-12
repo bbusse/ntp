@@ -8,7 +8,7 @@ jobs:
     runs-on: macos-12
     name: Build on FreeBSD
     steps:
-      - uses: actions/checkout@v3.3.0
+      - uses: actions/checkout@v3.5.1
       - name: Build on FreeBSD
         uses: vmactions/freebsd-vm@v0.3.0
         id: build
