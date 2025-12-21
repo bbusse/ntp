@@ -1,11 +1,11 @@
 module github.com/bbusse/ntp
 
-go 1.20
+go 1.24.0
 
-require github.com/beevik/ntp v0.3.0
+require github.com/beevik/ntp v1.5.0
 
 require (
-	github.com/stretchr/testify v1.8.2 // indirect
-	golang.org/x/net v0.8.0 // indirect
-	golang.org/x/sys v0.6.0 // indirect
+	github.com/stretchr/testify v1.11.1 // indirect
+	golang.org/x/net v0.48.0 // indirect
+	golang.org/x/sys v0.39.0 // indirect
 )
